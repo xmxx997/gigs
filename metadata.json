@@ -1,0 +1,7 @@
+{
+  "name": "JobMap",
+  "description": "A map-based job search application for non-office, local, and gig work, emphasizing immediate opportunities and real-world locations.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

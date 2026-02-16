@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JobMap - Terminal v2.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        overflow: hidden;
+        background-color: #050505;
+      }
+
+      .mono {
+        font-family: 'JetBrains Mono', monospace;
+      }
+
+      .leaflet-container {
+        height: 100%;
+        width: 100%;
+        background: #050505 !important;
+      }
+
+      /* Cyberpunk Scanlines */
+      body::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+        z-index: 10000;
+        background-size: 100% 4px, 3px 100%;
+        pointer-events: none;
+        opacity: 0.15;
+      }
+
+      /* Pulsing Marker Effect */
+      @keyframes pulse-neon {
+        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 243, 255, 0.7); }
+        70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 243, 255, 0); }
+        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 243, 255, 0); }
+      }
+
+      .neon-pulse-service { animation: pulse-neon 2s infinite; border-color: #00f3ff; }
+      .neon-pulse-physical { animation: pulse-neon 2s infinite; border-color: #ff00ff; }
+      .neon-pulse-technical { animation: pulse-neon 2s infinite; border-color: #cfff04; }
+      .neon-pulse-creative { animation: pulse-neon 2s infinite; border-color: #ffbd00; }
+
+      .custom-marker {
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      .custom-marker:hover {
+        transform: scale(1.2) rotate(5deg);
+      }
+
+      /* Monospace accent for digits */
+      .digit { font-family: 'JetBrains Mono', monospace; }
+      
+      /* Webkit scrollbar for dark theme */
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: #050505; }
+      ::-webkit-scrollbar-thumb { background: #00f3ff; border-radius: 2px; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react-leaflet": "https://esm.sh/react-leaflet@^5.0.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "leaflet": "https://esm.sh/leaflet@^1.9.4"
+  }
+}
+</script>
+</head>
+  <body class="bg-black">
+    <div id="root"></div>
+  </body>
+</html>
